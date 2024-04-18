@@ -1,19 +1,29 @@
 {
-    "Todo": [
-      {
-        "title": "wash the dishes",
-        "status": "0",
-        "id": "1"
-      },
-      {
-        "title": "play games",
-        "status": "0",
-        "id": "2"
-      },
-      {
-        "title": "eat food",
-        "status": "1",
-        "id": "3"
-      }
-    ]
-  }
+  "Todo": [
+    {
+      "title": "wash the dishes",
+      "status": "1",
+      "id": "1"
+    },
+    {
+      "title": "play games",
+      "status": "2",
+      "id": "2"
+    },
+    {
+      "title": "eat food",
+      "status": "1",
+      "id": "3"
+    },
+    {
+      "id": "4cbc",
+      "title": "gab",
+      "status": "1"
+    },
+    {
+      "id": "86f8",
+      "title": "Gabriel Ibanez",
+      "status": "1"
+    }
+  ]
+}

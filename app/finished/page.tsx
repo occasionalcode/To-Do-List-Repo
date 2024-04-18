@@ -3,14 +3,13 @@ import { todo } from "node:test";
 import { Trash2, CircleCheck } from "lucide-react";
 import { useState } from "react";
 
-type propsTodoList = {
+type propsFinished = {
   Todo: any[];
   title: string;
-  status: string;
 };
 
-const TodoList = ({ Todo, title, status }: propsTodoList) => {
-  const filteredTodos = Todo.filter((todo) => todo.status == status);
+const Finished = ({ Todo, title }: propsFinished) => {
+  const filteredTodos = Todo.filter((todo) => todo.status == "2");
   return (
     <div className="my-8">
       <h2 className="font-bold text-2xl my-5">{title}</h2>
@@ -23,9 +22,6 @@ const TodoList = ({ Todo, title, status }: propsTodoList) => {
             <h2>{todo.title}</h2>
             <div className="flex flex-row justify-between w-16">
               <button>
-                <CircleCheck />
-              </button>
-              <button>
                 <Trash2 />
               </button>
             </div>
@@ -36,4 +32,4 @@ const TodoList = ({ Todo, title, status }: propsTodoList) => {
   );
 };
 
-export default TodoList;
+export default Finished;

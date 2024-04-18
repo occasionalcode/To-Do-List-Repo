@@ -13,11 +13,11 @@ const Main = () => {
   } = useFetch({ url: "http://localhost:8000/Todo" });
 
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex  justify-center items-center">
       <div className="w-96">
         {error && <div>{error}</div>}
         {isPending && <div>Loading...</div>}
-        {todo && <TodoList Todo={todo} title="To Do lists!!!" />}
+        {todo && <TodoList Todo={todo} title="To Do lists!!!" status="1" />}
       </div>
     </div>
   );
