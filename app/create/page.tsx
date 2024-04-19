@@ -33,7 +33,7 @@ const CreateTask = () => {
     <div className="flex flex-col justify-center items-center font-Montserrat text-white ">
       <div className="flex flex-col  w-96 justify-center bg-TodoBlue pb-7 rounded-3xl rounded-tr-none rounded-tl-none shadow-[2px_2px_3px_0px_rgba(0,0,0,0.3)]">
         <h1 className=" font-light mt-10 ml-3 text-center">
-          <span className=" text-4xl font-medium text-blue-50 ">Create </span>{" "}
+          <span className=" text-4xl font-medium text-blue-50 ">Create </span> a
           new task!
         </h1>
         <div className="flex  flex-col items-center h-72 justify-between">
@@ -63,12 +63,12 @@ const CreateTask = () => {
             <div className="flex justify-center mt-7">
               {!isPending && (
                 <button className="bg-white w-32 h-10 text-black font rounded-full shadow-lg">
-                  Add Blog
+                  Add Task
                 </button>
               )}
               {isPending && (
                 <button className="bg-white w-32 h-10 text-black font rounded-full shadow-lg">
-                  Adding Blog...
+                  Adding Task...
                 </button>
               )}
             </div>
