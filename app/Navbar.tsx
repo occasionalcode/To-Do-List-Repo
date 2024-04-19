@@ -4,10 +4,13 @@ import Selection from "./Selection";
 
 const Navbar = () => {
   return (
-    <nav className="flex flex-col justify-center items-center mt-7">
-      <h1 className="font-bold text-3xl">TO DO MANAGER</h1>
-      <Selection />
-    </nav>
+    <div className="flex justify-center mt-10  h-20 text-green-900">
+      <nav className="flex  flex-row mx-32 items-center  font-Montserrats">
+        <div>
+          <h1 className="font-bold text-2xl">To Do</h1>
+        </div>
+      </nav>
+    </div>
   );
 };
 

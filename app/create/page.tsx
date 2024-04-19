@@ -21,40 +21,60 @@ const CreateTask = () => {
     }).then(() => {
       console.log("new Blog added");
       setIsPending(false);
-      window.location.href = "/";
+      if (status == "2") {
+        window.location.href = "/finished";
+      } else {
+        window.location.href = "/";
+      }
     });
   };
 
   return (
-    <div className="flex flex-col  mx-10">
-      <h1 className="text-4xl font-bold mt-10">Create new task!</h1>
-      <form
-        onSubmit={handleSubmit}
-        className="flex  flex-col items-center h-72 justify-between"
-      >
-        <div className="flex flex-col items-center mt-10">
-          <label className="text-3xl ">Blog Title:</label>
-          <input
-            className="text-center"
-            type="text"
-            required
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
+    <div className="flex flex-col justify-center items-center font-Montserrat text-white ">
+      <div className="flex flex-col  w-96 justify-center bg-TodoBlue pb-7 rounded-3xl rounded-tr-none rounded-tl-none shadow-[2px_2px_3px_0px_rgba(0,0,0,0.3)]">
+        <h1 className=" font-light mt-10 ml-3 text-center">
+          <span className=" text-4xl font-medium text-blue-50 ">Create </span>{" "}
+          new task!
+        </h1>
+        <div className="flex  flex-col items-center h-72 justify-between">
+          <form onSubmit={handleSubmit} className="">
+            <div className="flex flex-col items-center mt-6 mb-5 ">
+              <label className="text-xl mb-3 ">Task</label>
+              <input
+                className="text-center text-black h-10 w-72 px-3 rounded-md overflow-x-scroll"
+                type="text"
+                required
+                placeholder="What is your task?"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
+            </div>
+            <div className="flex flex-col items-center">
+              <label className="text-xl mb-3 ">Status</label>
+              <select
+                className="h-10 w-72 text-black text-center rounded-md"
+                value={status}
+                onChange={(e: any) => setStatus(e.target.value)}
+              >
+                <option value="1">To-Do</option>
+                <option value="2">Finished</option>
+              </select>
+            </div>
+            <div className="flex justify-center mt-7">
+              {!isPending && (
+                <button className="bg-white w-32 h-10 text-black font rounded-full shadow-lg">
+                  Add Blog
+                </button>
+              )}
+              {isPending && (
+                <button className="bg-white w-32 h-10 text-black font rounded-full shadow-lg">
+                  Adding Blog...
+                </button>
+              )}
+            </div>
+          </form>
         </div>
-        <div className="flex flex-col items-center">
-          <label className="text-3xl">Status</label>
-          <select
-            value={status}
-            onChange={(e: any) => setStatus(e.target.value)}
-          >
-            <option value="1">To-Do</option>
-            <option value="2">Finished</option>
-          </select>
-        </div>
-        {!isPending && <button>Add Blog</button>}
-        {isPending && <button disabled>Adding Blog...</button>}
-      </form>
+      </div>
     </div>
   );
 };
