@@ -7,7 +7,7 @@ const Selection = () => {
     <div className="flex justify-center mt-16  ">
       <div className="flex  w-80 justify-between">
         <Link href="/">To do</Link>
-        <Link href="/">Finished</Link>
+        <Link href="/finished">Finished</Link>
         <Link href="/create" className="bg-red-300 w-32 text-center">
           Create Task
         </Link>

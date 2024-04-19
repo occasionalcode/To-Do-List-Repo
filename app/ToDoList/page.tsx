@@ -22,9 +22,11 @@ const TodoList = ({ Todo, title, status }: propsTodoList) => {
           <div className="flex flex-row w-80 justify-between">
             <h2>{todo.title}</h2>
             <div className="flex flex-row justify-between w-16">
-              <button>
-                <CircleCheck />
-              </button>
+              {status == "1" && (
+                <button>
+                  <CircleCheck />
+                </button>
+              )}
               <button>
                 <Trash2 />
               </button>

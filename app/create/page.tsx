@@ -2,21 +2,26 @@
 
 import React, { useState } from "react";
 import Navbar from "../Navbar";
+import { useRouter } from "next/router";
 
 const CreateTask = () => {
   const [title, setTitle] = useState("");
   const [status, setStatus] = useState("1");
+  const [isPending, setIsPending] = useState(false);
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
     const todo = { title, status };
 
+    setIsPending(true);
     fetch("http://localhost:8000/Todo", {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(todo),
     }).then(() => {
       console.log("new Blog added");
+      setIsPending(false);
+      window.location.href = "/";
     });
   };
 
@@ -47,7 +52,8 @@ const CreateTask = () => {
             <option value="2">Finished</option>
           </select>
         </div>
-        <button>Add Task</button>
+        {!isPending && <button>Add Blog</button>}
+        {isPending && <button disabled>Adding Blog...</button>}
       </form>
     </div>
   );

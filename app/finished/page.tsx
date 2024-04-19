@@ -1,33 +1,21 @@
-import Link from "next/link";
-import { todo } from "node:test";
-import { Trash2, CircleCheck } from "lucide-react";
-import { useState } from "react";
+"use client";
+import TodoList from "../ToDoList/page";
+import React from "react";
+import useFetch from "../useFetch";
 
-type propsFinished = {
-  Todo: any[];
-  title: string;
-};
-
-const Finished = ({ Todo, title }: propsFinished) => {
-  const filteredTodos = Todo.filter((todo) => todo.status == "2");
+const Finished = () => {
+  const {
+    data: todo,
+    isPending,
+    error,
+  } = useFetch({ url: "http://localhost:8000/Todo" });
   return (
-    <div className="my-8">
-      <h2 className="font-bold text-2xl my-5">{title}</h2>
-      {filteredTodos.map((todo) => (
-        <div
-          className="flex flex-col my-3 h-20 justify-center items-center bg-blue-200 rounded-xl"
-          key={todo.id}
-        >
-          <div className="flex flex-row w-80 justify-between">
-            <h2>{todo.title}</h2>
-            <div className="flex flex-row justify-between w-16">
-              <button>
-                <Trash2 />
-              </button>
-            </div>
-          </div>
-        </div>
-      ))}
+    <div className="flex  justify-center items-center">
+      <div className="w-96">
+        {error && <div>{error}</div>}
+        {isPending && <div>Loading...</div>}
+        {todo && <TodoList Todo={todo} title="To Do lists!!!" status="2" />}
+      </div>
     </div>
   );
 };
