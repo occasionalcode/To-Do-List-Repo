@@ -1,7 +1,7 @@
 "use client";
-import TodoList from "../ToDoList/page";
+import TodoList from "../../component/TodoList";
 import React from "react";
-import useFetch from "../useFetch";
+import useFetch from "../../useFetch";
 import { Ellipsis } from "lucide-react";
 
 const Finished = () => {
@@ -22,7 +22,7 @@ const Finished = () => {
             </div>
           </div>
         )}
-        {todo && <TodoList Todo={todo} title="To Do lists!!!" status="2" />}
+        {todo && <TodoList Todo={todo} status="2" />}
       </div>
     </div>
   );

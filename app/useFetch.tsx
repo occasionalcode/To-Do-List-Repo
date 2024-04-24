@@ -7,6 +7,7 @@ const useFetch = ({ url }: any) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    // if !pending return null
     const abortCont = new AbortController();
     fetch(url, { signal: abortCont.signal })
       .then((res) => {
@@ -30,7 +31,7 @@ const useFetch = ({ url }: any) => {
         }
       });
     return () => abortCont.abort();
-  }, [setData]);
+  }, [isPending]);
 
   return { data, isPending, error };
 };
