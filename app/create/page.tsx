@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import Navbar from "../../Navbar";
+import Navbar from "../Navbar";
 import { useRouter } from "next/router";
 
 import { ChevronDown, ChevronUp } from "lucide-react";
@@ -97,9 +97,8 @@ const CreateTask = () => {
                   {isOpen && (
                     <div className=" flex justify-center flex-col bg-white w-32 border border-gray-300 rounded-md rounded-tl-none rounded-tr-none shadow-md">
                       {list.map((item, index) => (
-                        <li className="list-none">
+                        <li className="list-none" key={index}>
                           <ul
-                            key={index}
                             className="cursor-pointer py-2 px-4 hover:bg-gray-100"
                             onClick={() =>
                               handleSelectStatus(index === 0 ? "1" : "2")

@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import CreateTask from "./pages/create/page";
+import CreateTask from "./create/page";
 import { useRouter } from "next/navigation";
 
 const Selection = () => {
@@ -12,12 +12,12 @@ const Selection = () => {
             <h2>To do</h2>
           </div>
         </Link>
-        <Link href="/pages/finished">
+        <Link href="/finished">
           <div className="flex items-center justify-center w-32 h-14 pt-1 text-center bg-TodoGreen rounded-tl-lg rounded-tr-lg hover:h-20 transition-all duration-100">
             <h2>Finished</h2>
           </div>
         </Link>
-        <Link href="/pages/create">
+        <Link href="/create">
           <div className="flex items-center justify-center w-32 h-14  pt-1 text-white  text-center bg-TodoBlue rounded-tl-lg rounded-tr-lg hover:h-20 transition-all duration-100">
             <h2>Create Task</h2>
           </div>
