@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Navbar from "../Navbar";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 import { ChevronDown, ChevronUp } from "lucide-react";
 
@@ -12,6 +12,7 @@ const CreateTask = () => {
   const [isPending, setIsPending] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const list = ["To-Do", "Finished"];
+  const router = useRouter();
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -27,9 +28,12 @@ const CreateTask = () => {
       console.log("new Blog added");
       setIsPending(false);
       if (status == "2") {
-        window.location.href = "/pages/finished";
+        // window.location.href = "/finished";
+        router.push("/finished");
+        useRouter;
       } else {
-        window.location.href = "/";
+        // window.location.href = "/";
+        router.push("/");
       }
     });
   };
@@ -60,7 +64,7 @@ const CreateTask = () => {
               />
             </div>
             <div className="flex flex-col items-center">
-              <label className="text-xl mb-3 ">Status</label>
+              <label className="text-xl mb-3">Status</label>
               {/* <select
                 className="h-10 w-72 text-black text-center rounded-md"
                 value={status}
@@ -85,9 +89,13 @@ const CreateTask = () => {
                   </div>
                 )}
               </div> */}
+
               <div className="flex flex-col items-center text-black">
                 <div className="flex flex-col justify-center items-center">
-                  <button onClick={() => setIsOpen((prev) => !prev)}>
+                  <button
+                    type="button"
+                    onClick={() => setIsOpen((prev) => !prev)}
+                  >
                     <div className="flex flex-row justify-between px-5 items-center  text-black hover:bg-gray-100  bg-white w-32 h-8  rounded-md ">
                       <p>{status === "1" ? "To-Do" : "Finished"}</p>
 
@@ -115,7 +123,10 @@ const CreateTask = () => {
             </div>
             <div className="flex justify-center mt-7">
               {!isPending && (
-                <button className="bg-white hover:bg-gray-100 w-32 h-10 text-black font rounded-full shadow-lg">
+                <button
+                  type="submit"
+                  className="bg-white hover:bg-gray-100 w-32 h-10 text-black font rounded-full shadow-lg"
+                >
                   Add Task
                 </button>
               )}

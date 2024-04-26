@@ -1,15 +1,14 @@
 import Link from "next/link";
 import { todo } from "node:test";
 import { Trash2, CircleCheck, Router } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, cache } from "react";
 import { Undo2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { revalidatePath } from "next/cache";
-import { stat } from "fs";
 
 const TodoList = ({ status }: any) => {
   const [todo, setTodo] = useState([]);
-  const [stopper, setStopper] = useState(false);
+  const [loading, setLoading] = useState(true);
   // const [currentStatus, setCurrentStatus] = useState("1");
 
   // const filteredTodos = todo.filter((todo) => todo.status == status);
@@ -20,10 +19,13 @@ const TodoList = ({ status }: any) => {
       const response = await fetch("http://localhost:8000/Todo");
       const data = await response.json();
       setTodo(data);
+      setLoading(false);
     }
 
-    fetchData();
-  }, [stopper]);
+    if (loading === true) {
+      fetchData();
+    }
+  }, [loading]);
 
   const handleDelete = (todoId: any) => {
     fetch("http://localhost:8000/Todo/" + todoId, {
@@ -32,9 +34,8 @@ const TodoList = ({ status }: any) => {
       .then(() => console.log(todoId))
       .then(() => {
         setTodo(todo);
-        setStopper(true);
+        setLoading(true);
       });
-    return setStopper(false);
   };
 
   const handleFinished = (todoId: any) => {
@@ -45,9 +46,8 @@ const TodoList = ({ status }: any) => {
     }).then(() => {
       console.log(JSON.stringify({ status: "2" }));
       setTodo(todo);
-      setStopper(true);
+      setLoading(true);
     });
-    return setStopper(false);
   };
   const handleUnFinished = (todoId: any) => {
     fetch("http://localhost:8000/Todo/" + todoId, {
@@ -57,9 +57,8 @@ const TodoList = ({ status }: any) => {
     }).then(() => {
       console.log(JSON.stringify({ status: "1" }));
       setTodo(todo);
-      setStopper(true);
+      setLoading(true);
     });
-    return setStopper(false);
   };
 
   const filteredTodos = todo.filter((todo: any) => todo.status === status);
@@ -113,7 +112,7 @@ const TodoList = ({ status }: any) => {
           >
             <div className="flex flex-row w-80 font-semibold justify-between">
               <div className="w-56 ">
-                <h2>{todo.title}</h2>
+                <p>{todo.title}</p>
               </div>
               <div className="flex flex-row justify-between w-16 ">
                 {status == "1" && (

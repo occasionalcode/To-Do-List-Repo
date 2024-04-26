@@ -1,5 +1,5 @@
 "use client";
-import TodoList from "../component/TodoList";
+import TodoList from "../component/todoList";
 import React from "react";
 import useFetch from "../useFetch";
 import { Ellipsis } from "lucide-react";

@@ -4,7 +4,7 @@ import Navbar from "./Navbar";
 // import Main from "./component/Main";
 import useFetch from "./useFetch";
 import { Ellipsis } from "lucide-react";
-import TodoList from "./component/TodoList";
+import TodoList from "./component/todoList";
 
 export default function Home() {
   const {
