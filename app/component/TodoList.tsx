@@ -5,6 +5,7 @@ import { useState, useEffect, cache } from "react";
 import { Undo2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { revalidatePath } from "next/cache";
+import { CustomAlertDialogDemo } from "./alertDialog";
 
 const TodoList = ({ status }: any) => {
   const [todo, setTodo] = useState([]);
@@ -110,11 +111,11 @@ const TodoList = ({ status }: any) => {
             className="flex flex-col my-3 h-20 justify-center items-center bg-white rounded-md shadow-[2px_2px_3px_1px_rgba(0,0,0,0.3)]"
             key={todo.id}
           >
-            <div className="flex flex-row w-80 font-semibold justify-between">
+            <div className="flex flex-row w-80 font-semibold justify-between place-items-center">
               <div className="w-56 ">
                 <p>{todo.title}</p>
               </div>
-              <div className="flex flex-row justify-between w-16 ">
+              <div className="flex flex-row justify-between items-center w-16 ">
                 {status == "1" && (
                   <Link href={"/"}>
                     <CircleCheck
@@ -136,11 +137,15 @@ const TodoList = ({ status }: any) => {
                   </Link>
                 )}
                 <button>
-                  <Trash2
+                  {/* <Trash2
                     className="text-red-600"
                     onClick={() => {
                       handleDelete(todo.id);
                     }}
+                  /> */}
+                  <CustomAlertDialogDemo
+                    effect={() => handleDelete(todo.id)}
+                    icon={<Trash2 className="text-red-600 " />}
                   />
                 </button>
               </div>
