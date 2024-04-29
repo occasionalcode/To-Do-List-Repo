@@ -89,7 +89,6 @@ const CreateTask = () => {
                   </div>
                 )}
               </div> */}
-
               <div className="flex flex-col items-center text-black">
                 <div className="flex flex-col justify-center items-center">
                   <button
@@ -98,7 +97,6 @@ const CreateTask = () => {
                   >
                     <div className="flex flex-row justify-between px-5 items-center  text-black hover:bg-gray-100  bg-white w-32 h-8  rounded-md ">
                       <p>{status === "1" ? "To-Do" : "Finished"}</p>
-
                       <div>{!isOpen ? <ChevronDown /> : <ChevronUp />}</div>
                     </div>
                   </button>
